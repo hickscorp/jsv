@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🚀 Features
 
+- [**breaking**] The `jsv-cast` keyword was replaced by `x-jsv-cast`.
 - [**breaking**] Changed schema titles for JSV.KeywordError, JSV.ValidationError and JSV.ValidationUnit
 
 ## [0.15.2] - 2026-01-19
@@ -347,4 +348,3 @@ All notable changes to this project will be documented in this file.
 - Document functions with doc and spec
 
 ## [0.1.0] - 2025-01-01
-
