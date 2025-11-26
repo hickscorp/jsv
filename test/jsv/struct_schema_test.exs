@@ -746,7 +746,7 @@ defmodule JSV.StructSchemaTest do
                  bar: %{type: :string, default: "hello"}
                },
                required: [:foo],
-               "jsv-cast": [to_string(WithKW), 0]
+               "x-jsv-cast": [to_string(WithKW), 0]
              } == WithKW.json_schema()
     end
 
@@ -767,7 +767,7 @@ defmodule JSV.StructSchemaTest do
                  age: %{type: :integer}
                },
                required: [:name, :age],
-               "jsv-cast": [to_string(WithKWAllRequired), 0]
+               "x-jsv-cast": [to_string(WithKWAllRequired), 0]
              } == WithKWAllRequired.json_schema()
 
       assert_raise ArgumentError, ~r/the following keys.+\[:age\]/, fn ->
@@ -791,7 +791,7 @@ defmodule JSV.StructSchemaTest do
                  active: %{type: :boolean, default: true}
                },
                required: [:id],
-               "jsv-cast": [to_string(WithKWMixed), 0]
+               "x-jsv-cast": [to_string(WithKWMixed), 0]
              } == WithKWMixed.json_schema()
 
       %WithKWMixed{} = struct!(WithKWMixed, id: 1)
@@ -821,7 +821,7 @@ defmodule JSV.StructSchemaTest do
                type: :object,
                properties: %{},
                required: [],
-               "jsv-cast": [to_string(EmptyStruct), 0]
+               "x-jsv-cast": [to_string(EmptyStruct), 0]
              } == EmptyStruct.json_schema()
 
       assert {:ok, root} = JSV.build(EmptyStruct)
@@ -855,7 +855,7 @@ defmodule JSV.StructSchemaTest do
                  name: %{type: :string},
                  sub_b: JSV.StructSchemaTest.RecursiveBKW
                },
-               "jsv-cast": ["Elixir.JSV.StructSchemaTest.RecursiveAKW", 0]
+               "x-jsv-cast": ["Elixir.JSV.StructSchemaTest.RecursiveAKW", 0]
              } ==
                RecursiveAKW.json_schema()
 
@@ -867,7 +867,7 @@ defmodule JSV.StructSchemaTest do
                  name: %{type: :string},
                  sub_a: JSV.StructSchemaTest.RecursiveAKW
                },
-               "jsv-cast": ["Elixir.JSV.StructSchemaTest.RecursiveBKW", 0]
+               "x-jsv-cast": ["Elixir.JSV.StructSchemaTest.RecursiveBKW", 0]
              } ==
                RecursiveBKW.json_schema()
     end
@@ -1017,7 +1017,7 @@ defmodule JSV.StructSchemaTest do
                  name: %{type: :string},
                  sub_b: RecursiveSubB
                },
-               "jsv-cast": [to_string(RecursiveSubA), 0]
+               "x-jsv-cast": [to_string(RecursiveSubA), 0]
              } == RecursiveSubA.json_schema()
 
       assert %{
@@ -1029,7 +1029,7 @@ defmodule JSV.StructSchemaTest do
                  name: %{type: :string},
                  sub_a: RecursiveSubA
                },
-               "jsv-cast": [to_string(RecursiveSubB), 0]
+               "x-jsv-cast": [to_string(RecursiveSubB), 0]
              } == RecursiveSubB.json_schema()
 
       # Test validation
@@ -1094,7 +1094,7 @@ defmodule JSV.StructSchemaTest do
                  name: %{type: :string},
                  sub_self: SelfRecursiveSub
                },
-               "jsv-cast": [to_string(SelfRecursiveSub), 0]
+               "x-jsv-cast": [to_string(SelfRecursiveSub), 0]
              } == SelfRecursiveSub.json_schema()
 
       # Test validation
@@ -1210,7 +1210,7 @@ defmodule JSV.StructSchemaTest do
                },
                additionalProperties: false,
                required: [:id, :email],
-               "jsv-cast": ["Elixir.JSV.StructSchemaTest.FullSchemaUser", 0]
+               "x-jsv-cast": ["Elixir.JSV.StructSchemaTest.FullSchemaUser", 0]
              } == FullSchemaUser.json_schema()
 
       valid_data = %{"id" => 123, "email" => "user@example.com"}
